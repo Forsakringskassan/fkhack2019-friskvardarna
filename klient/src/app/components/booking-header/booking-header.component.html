@@ -1,16 +1,23 @@
 <div class="header">
-<mat-grid-list cols="3" rows=1 rowHeight="50px">
+<mat-grid-list cols="3" rows=1 rowHeight="130px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="left_position">
       <button mat-icon-button [matMenuTriggerFor]="menu">
         <mat-icon>reorder</mat-icon></button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Item 1</button>
-        <button mat-menu-item>Item 2</button>
+        <button mat-menu-item>Mina bokningar</button>
+        <button mat-menu-item>Inställningr</button>
       </mat-menu>
       <span class="right_position">
         Hej Simon!
       </span>
+      <span class="bottom_position">
+          <button mat-button [matMenuTriggerFor]="menu2">{{text1}}</button>
+          <mat-menu #menu2="matMenu">
+            <button mat-menu-item (click)="onClick1()">{{text2}}</button>
+            <button mat-menu-item (click)="onClick2()">{{text3}}</button>
+          </mat-menu>
+        </span>
       </span>
     </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
