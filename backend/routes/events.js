@@ -32,7 +32,7 @@ router.get('/location/:locationid', function(req, res, next) {
     res.header('Access-Control-Allow-Headers', 'Content-Type');
 
     const locationid = parseInt(req.params.locationid)
-    pool.query('SELECT E.*, TO_CHAR(E.eventdate,\'YYYY-MM-DD\') as eventdate, TO_CHAR(E.eventdate,\'DY\') as eventday, TO_CHAR(E.eventdate,\'IW\') as week, (select count(*) from bookings B where B.event = E.id) as bookings FROM public.events E where E.id = $1 ORDER BY E.id ASC', [locationid], (error, results) => {
+    pool.query('SELECT E.*, TO_CHAR(E.eventdate,\'YYYY-MM-DD\') as eventdate, TO_CHAR(E.eventdate,\'DY\') as eventday, TO_CHAR(E.eventdate,\'IW\') as week, (select count(*) from bookings B where B.event = E.id) as bookings FROM public.events E where E.location = $1 ORDER BY E.id ASC', [locationid], (error, results) => {
         if (error) {
             throw error
         }

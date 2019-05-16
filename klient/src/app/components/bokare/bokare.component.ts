@@ -1,36 +1,32 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { _Event, Booking } from '../../classes';
 
 @Component({
   selector: 'app-bokare',
   templateUrl: './bokare.component.html',
   styleUrls: ['./bokare.component.css']
 })
-export class BokareComponent implements OnInit {
+export class BokareComponent {
 
-  @Input() events;
+  @Input() events: _Event[];
+  @Input() bookings: Booking[];
+  @Input() userid: number;
 
   constructor() { }
 
-  ngOnInit() {
-    // Mock
-    this.events = [{
-      id: 1,
-      day: "Mån",
-      date: "10/5",
-      name: "Step",
-      time: "11:00",
-      maxBookings: 20,
-      booked: 5
-    },
-    {
-      id: 2,
-      day: "Tis",
-      date: "11/5",
-      name: "Core",
-      time: "11:00",
-      maxBookings: 25,
-      booked: 6
-    }]
-  }
+  // ngOnChanges(changes: SimpleChanges) {
+  //   for (let propName in changes) {
+  //     if (propName === "events" && changes[propName] && this.bookings) {
+  //       this.updateButtons();
+  //     }
+  //     else if (propName === "bookings" && changes[propName] && this.events) {
+  //       this.updateButtons();
+  //     }
+  //   }
+  // }
+
+  // updateButtons(): void {
+
+  // }
 
 }

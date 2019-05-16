@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EventService } from '../../services/event.service'
+import { _Event, Booking } from '../../classes'
 
 
 
@@ -9,11 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingHeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private eventService: EventService) { }
   user;
   text1: string;
   text2: string;
   text3: string;
+
+  events: _Event[];
+  bookings: Booking[];
+
 
   ngOnInit() {
     this.user = {
@@ -23,6 +29,21 @@ export class BookingHeaderComponent implements OnInit {
       this.text1 = "Sundsvall";
       this.text2 = "Stockholm";
       this.text3 = "Karlskrona";
+
+      this.user = {
+        name: "Robert",
+        id: 5
+      }
+    this.eventService.getEvents().subscribe(events => {
+      this.events = events;
+      for (let i = 0; i < this.events.length; i++) {
+        this.events[i].eventdate = this.events[i].eventdate.substring(5, 7) + "/" + this.events[i].eventdate.substring(8, 10)
+        this.events[i].eventday = this.translateDay(this.events[i].eventday);
+      }
+    });
+    this.eventService.getUsersBookings(this.user.id).subscribe(bookings => {
+      this.bookings = bookings;
+    })
   }
 
   onClick1(): void {
@@ -47,4 +68,24 @@ export class BookingHeaderComponent implements OnInit {
     }
   }
 
+  translateDay(day: string): string {
+    switch (day) {
+      case "MON":
+        return "Mån";
+      case "TUE":
+        return "Tis";
+      case "WEN":
+        return "Ons";
+      case "THU":
+        return "Tor";
+      case "FRI":
+        return "Fre";
+      case "SAT":
+        return "Lör";
+      case "SUN":
+        return "Sön";
+      default:
+        return "ERROR";
+    }
+  }
 }

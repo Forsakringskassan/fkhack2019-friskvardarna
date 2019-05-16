@@ -3,7 +3,7 @@
         <mat-grid-list cols="5" rowHeight="50px">
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <span class="text">
-                {{event.day}} {{event.date}}
+                {{event.eventday}} {{event.eventdate}}
               </span>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
@@ -13,16 +13,16 @@
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <span class="text">
-                {{event.time}}
+                {{event.eventtime}}
               </span>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
               <span class="text">
-                  {{event.booked}}/{{event.maxBookings}}
+                  {{event.bookings}}/{{event.maxbookings}}
               </span>
             </mat-grid-tile>
             <mat-grid-tile [colspan]="1" [rowspan]="1">
-               <app-booking-button [eventId]="event.id" [booked]="false"></app-booking-button>
+               <app-booking-button [event]="event" [bookings]="bookings" [userid]="userid"></app-booking-button>
             </mat-grid-tile>
         </mat-grid-list>
     </mat-card-content>

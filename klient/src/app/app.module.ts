@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BookingButtonComponent } from './components/booking-button/booking-button.component';
 import { BookingHeaderComponent } from './components/booking-header/booking-header.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
@@ -28,6 +29,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatMenuModule,
+    HttpClientModule,
     MatIconModule
   ],
   providers: [],
