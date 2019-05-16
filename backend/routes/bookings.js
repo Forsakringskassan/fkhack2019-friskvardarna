@@ -12,6 +12,11 @@ const pool = new Pool({
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     pool.query('SELECT * FROM public.bookings ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
@@ -19,5 +24,52 @@ router.get('/', function(req, res, next) {
         res.status(200).json(results.rows)
     })
 });
+
+router.delete('/:bookingid', function(req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    const bookingid = parseInt(req.params.bookingid)
+    pool.query('DELETE FROM bookings WHERE id = $1', [bookingid], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).json(results.rows)
+    })
+});
+
+router.post('/', function (req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    const {event, userid} = req.body
+
+    pool.query('SELECT * FROM bookings where event=$1 AND "user" = $2 ORDER BY id ASC',[event, userid], (error, results) => {
+        if (error) {
+            throw error
+        }
+        console.log(results.rows.length)
+        if(results.rows.length > 0){
+            res.status(406).send('User is already booked for this event')
+        }
+        else{
+            console.log(event)
+            console.log(userid)
+
+            pool.query('INSERT INTO bookings ( event, "user") VALUES ($1, $2)', [event, userid], (error, results) => {
+                if (error) {
+                    throw error
+                }
+                res.status(201).send(`Booking created with ID: ${res.insertId}`)
+            })
+        }
+    })
+});
+
+
 
 module.exports = router;
