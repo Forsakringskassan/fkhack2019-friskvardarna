@@ -1,0 +1,19 @@
+<div class="header">
+<mat-grid-list cols="3" rows=2 rowHeight="50px">
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+      </mat-menu>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1">
+      <span class="userText">
+        Hej {{user.name}}!
+      </span>
+    </mat-grid-tile>
+</mat-grid-list>
+</div>
+
+<mat-divider></mat-divider>
+<app-bokare></app-bokare>

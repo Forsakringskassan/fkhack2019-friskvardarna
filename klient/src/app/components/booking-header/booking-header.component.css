@@ -1,0 +1,11 @@
+.userText {
+    text-align: "left";
+    /* font-weight: "bold"; */
+    position: absolute;
+    left: 5px;
+}
+
+.header {
+    margin-bottom: 5px;
+    margin: 2em;
+}

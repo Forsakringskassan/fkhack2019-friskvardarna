@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-bokare',
@@ -7,21 +7,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BokareComponent implements OnInit {
 
+  @Input() events;
+
   constructor() { }
-  events;
 
   ngOnInit() {
+    // Mock
     this.events = [{
-      dag: "Mån",
-      datum: "10/5",
-      maxDeltagare: 20,
-      deltagare: 5
+      id: 1,
+      day: "Mån",
+      date: "10/5",
+      name: "Step",
+      time: "11:00",
+      maxBookings: 20,
+      booked: 5
     },
     {
-      dag: "Tis",
-      datum: "11/5",
-      maxDeltagare: 25,
-      deltagare: 6
+      id: 2,
+      day: "Tis",
+      date: "11/5",
+      name: "Core",
+      time: "11:00",
+      maxBookings: 25,
+      booked: 6
     }]
   }
 
