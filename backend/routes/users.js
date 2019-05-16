@@ -13,6 +13,11 @@ const pool = new Pool({
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     pool.query('SELECT * FROM public.users ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
@@ -22,6 +27,11 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     const {name, username, email, location, password} = req.body
 
     var salt = crypto.randomBytes(16).toString('base64');
@@ -42,6 +52,11 @@ router.post('/', function (req, res, next) {
 
 
 router.get('/:userid/bookings', function (req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     const id = parseInt(req.params.userid)
     console.log(id)
     pool.query('SELECT id as bookingid, event, user, tstamp FROM public.bookings where "user" =$1 ORDER BY id ASC', [id], (error, results) => {

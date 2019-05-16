@@ -12,6 +12,11 @@ const pool = new Pool({
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     pool.query('SELECT * FROM public.bookings ORDER BY id ASC', (error, results) => {
         if (error) {
             throw error
@@ -21,6 +26,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.delete('/:bookingid', function(req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     const bookingid = parseInt(req.params.bookingid)
     pool.query('DELETE FROM bookings WHERE id = $1', [bookingid], (error, results) => {
         if (error) {
@@ -31,6 +41,11 @@ router.delete('/:bookingid', function(req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
     const {event, userid} = req.body
 
     pool.query('SELECT * FROM bookings where event=$1 AND "user" = $2 ORDER BY id ASC',[event, userid], (error, results) => {
