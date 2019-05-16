@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { BookingButtonComponent } from './components/booking-button/booking-button.component';
 import { BookingHeaderComponent } from './components/booking-header/booking-header.component';
 import {MatMenuModule} from '@angular/material/menu';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {MatMenuModule} from '@angular/material/menu';
     MatGridListModule,
     MatCardModule,
     MatButtonModule,
-    MatMenuModule
+    MatMenuModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
