@@ -25,6 +25,22 @@ router.get('/', function(req, res, next) {
     })
 });
 
+router.get('/user/:userid', function(req, res, next) {
+
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+    const userid = parseInt(req.params.userid);
+
+    pool.query('SELECT * FROM public.bookings where "user" = $1 ORDER BY id ASC', [userid], (error, results) => {
+        if (error) {
+            throw error
+        }
+        res.status(200).json(results.rows)
+    })
+});
+
 router.delete('/:bookingid', function(req, res, next) {
 
     res.header('Access-Control-Allow-Origin', '*');
