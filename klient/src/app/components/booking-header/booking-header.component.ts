@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../services/event.service'
 import { _Event, Booking } from '../../classes'
 
+
+
 @Component({
   selector: 'app-booking-header',
   templateUrl: './booking-header.component.html',
