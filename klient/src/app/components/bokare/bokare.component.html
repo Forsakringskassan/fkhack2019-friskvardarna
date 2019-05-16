@@ -1,12 +1,29 @@
-<mat-list>
-    <mat-list-item *ngFor="let event of events">
-      <span>
-          {{event.dag}}
-      </span> 
-      <span>
-          {{event.deltagare}}/{{event.maxDeltagare}}
-      </span>
-      
-    </mat-list-item>
-    <mat-divider></mat-divider>
-</mat-list>
+<mat-card *ngFor="let event of events" class="card">
+    <mat-card-content>
+        <mat-grid-list cols="5" rowHeight="50px">
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <span class="text">
+                {{event.day}} {{event.date}}
+              </span>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <span class="text bold">
+                {{event.name}}
+              </span>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <span class="text">
+                {{event.time}}
+              </span>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+              <span class="text">
+                  {{event.booked}}/{{event.maxBookings}}
+              </span>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="1">
+               <app-booking-button [eventId]="event.id" [booked]="false"></app-booking-button>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-card-content>
+</mat-card>
