@@ -1,46 +1,43 @@
 .userText {
-    text-align: "right";
-    /* font-weight: "bold"; */
-    /*position: absolute;*/
-    
+  text-align: right;
+  /* font-weight: "bold"; */
+  /*position: absolute;*/
+
 }
 
 .header {
-    margin-bottom: 5px;
-    margin-right: 40px;
-    margin-top: 30px;
-    margin-left: 40px;
-   
+  margin: 30px 7% 5px;
+  background-color: transparent;
 }
 
 .left_position {
-    margin-right: 50%;
+  margin-right: 50%;
 }
 
 .right_position {
-    text-align: right;
-    font-size: 50px;
-    padding-left: 10px;
-    
+  text-align: right;
+  font-size: 50px;
+  padding-left: 10px;
+
 }
 
 .bottom_position {
-    /*margin-top: 30px;*/
-    float: right;
-    padding-right: 30%;
+  /*margin-top: 30px;*/
+  float: right;
+  padding-right: 30%;
 }
 
 .week_align {
-    margin-top: 30px;
-    
+  margin-top: 30px;
+
 }
 
-.icon_align{
-    margin-left: 35%;
+.icon_align {
+  margin-left: 35%;
 }
 
-.img_size{
-    height: 40px;
-    width: 40px;
-    
+.img_size {
+  height: 40px;
+  width: 40px;
+
 }
