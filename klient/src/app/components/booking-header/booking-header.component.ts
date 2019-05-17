@@ -37,7 +37,7 @@ export class BookingHeaderComponent implements OnInit {
     this.eventService.getEvents().subscribe(events => {
       this.events = events;
       for (let i = 0; i < this.events.length; i++) {
-        this.events[i].eventdate = this.events[i].eventdate.substring(5, 7) + "/" + this.events[i].eventdate.substring(8, 10)
+        this.events[i].eventdate = this.events[i].eventdate.substring(8, 10) + "/" + this.events[i].eventdate.substring(5, 7)
         this.events[i].eventday = this.translateDay(this.events[i].eventday);
       }
     });
@@ -74,7 +74,7 @@ export class BookingHeaderComponent implements OnInit {
         return "Mån";
       case "TUE":
         return "Tis";
-      case "WEN":
+      case "WED":
         return "Ons";
       case "THU":
         return "Tor";

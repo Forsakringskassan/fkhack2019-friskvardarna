@@ -1,5 +1,5 @@
 <div class="header">
-<mat-grid-list cols="3" rows=1 rowHeight="130px">
+<mat-grid-list cols="3" rows=1 rowHeight="135px">
     <mat-grid-tile [colspan]="1" [rowspan]="1">
       <span class="left_position">
       <button mat-icon-button [matMenuTriggerFor]="menu">
@@ -12,7 +12,7 @@
         Hej Simon!
       </span>
       <span class="bottom_position">
-          <button mat-button [matMenuTriggerFor]="menu2">{{text1}}</button>
+          <button mat-button [matMenuTriggerFor]="menu2">{{selectedStad}}</button>
           <mat-menu #menu2="matMenu">
             <button mat-menu-item (click)="onClick1()">{{text2}}</button>
             <button mat-menu-item (click)="onClick2()">{{text3}}</button>
@@ -30,7 +30,7 @@
         </span>
       </mat-grid-tile>
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-        
+
           <div class="icon_align">
             <img class="img_size" src="assets/fk_bild.jpeg">
             </div>

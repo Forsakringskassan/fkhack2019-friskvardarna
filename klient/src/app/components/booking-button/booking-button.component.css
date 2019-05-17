@@ -5,3 +5,9 @@
 .red {
     color: red;
 }
+
+.sizeButton {
+    /* width: 200%;
+    height: 200%; */
+    font-size: 24px;
+}
